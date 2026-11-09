@@ -41,3 +41,13 @@ backend/uploads/
 
 # OS files
 .DS_Store
+
+# AWS deployment artifacts
+backend/lambda-venv/
+backend/package/
+backend/*.zip
+projectflow-*.zip
+
+# Frontend dependencies and builds
+node_modules/
+dist/
