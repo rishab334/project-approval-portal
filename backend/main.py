@@ -19,7 +19,13 @@ from sqlalchemy import create_engine, text
 # ---------------------------------------------------------
 
 BASE_DIR = Path(__file__).resolve().parent
-CONTRACTS_DIR = BASE_DIR / "uploads" / "contracts"
+
+if os.getenv("AWS_LAMBDA_FUNCTION_NAME"):
+    CONTRACTS_DIR = Path("/tmp/uploads/contracts")
+else:
+    CONTRACTS_DIR = BASE_DIR / "uploads" / "contracts"
+
+CONTRACTS_DIR.mkdir(parents=True, exist_ok=True)
 MAX_CONTRACT_SIZE = 10 * 1024 * 1024
 ALLOWED_EXTENSIONS = {".pdf", ".doc", ".docx"}
 
