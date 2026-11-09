@@ -4,6 +4,7 @@ from pathlib import Path
 from uuid import uuid4
 from datetime import date
 from decimal import Decimal
+from mangum import Mangum
 from typing import Optional, List
 
 from fastapi import FastAPI, HTTPException, UploadFile, File, Form
@@ -1325,3 +1326,4 @@ RATE_CARDS = {
         "rate": Decimal("2000")
     }
 }
+handler = Mangum(app)
